@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF</title>
+</head>
+<body>
+    <div>
+    <h1>Upload PDF</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <button type="button" onclick="uploadPdf()">Upload</button>
+        </form>
+    </div>
+    <div style="padding-top: 50px;">
+     <a href="http://127.0.0.1:8000/qa/"><button>Go to QA Page</button></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function uploadPdf() {
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            axios.post('http://127.0.0.1:8000/api/v1/upload-file/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(response => {
+                alert('PDF uploaded successfully.');
+                // Optionally, do something with the response
+                console.log(response);
+            })
+            .catch(error => {
+                alert('Error uploading PDF.');
+                console.error('Upload error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
