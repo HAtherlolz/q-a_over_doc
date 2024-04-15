@@ -13,7 +13,7 @@ class Settings(BaseConfig):
 
     # DIRS
     UPLOAD_DIRECTORY: str = "app/files"
-    CHROMADB_DIRECTORY: str = "chromadb"
+    CHROMADB_DIRECTORY: str = "chroma"
 
     # CHROMADB
     CHROMADB_COLLECTION: str = "documents_collection"

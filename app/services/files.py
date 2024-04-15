@@ -7,7 +7,7 @@ from fastapi import UploadFile
 from config.conf import settings
 from app.services.llm import get_llm_response
 from app.schemas.responses import ResponseSchema
-from app.repositories.chromadb.docs import store_doc
+from app.repositories.chroma.docs import store_doc
 
 
 def save_file(file: UploadFile) -> ResponseSchema:
